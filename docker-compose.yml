@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:latest
+    container_name: dvd-rental-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./:/docker-entrypoint-initdb.d/
+    command:
+      - bash
+      - -c
+      - |
+        localedef -i de_DE -c -f UTF-8 -A /usr/share/locale/locale.alias de_DE.UTF-8;
+        exec docker-entrypoint.sh postgres
