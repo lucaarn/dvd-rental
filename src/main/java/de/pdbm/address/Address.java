@@ -1,5 +1,6 @@
 package de.pdbm.address;
 
+import de.pdbm.city.City;
 import de.pdbm.customer.Customer;
 import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.*;
@@ -25,8 +26,9 @@ public class Address {
     private String district;
 
     @NotNull
-    @Column(name = "city_id")
-    private Integer cityId;
+    @ManyToOne
+    @JoinColumn(name = "city_id", nullable = false)
+    private City city;
 
     @Column(name = "postal_code")
     private String postalCode;
@@ -52,7 +54,7 @@ public class Address {
                 ", address='" + address + '\'' +
                 ", address2='" + address2 + '\'' +
                 ", district='" + district + '\'' +
-                ", cityId=" + cityId +
+                ", city=" + city +
                 ", postalCode='" + postalCode + '\'' +
                 ", phone='" + phone + '\'' +
                 ", lastUpdate=" + lastUpdate +
@@ -89,12 +91,12 @@ public class Address {
         this.district = district;
     }
 
-    public Integer getCityId() {
-        return cityId;
+    public City getCity() {
+        return city;
     }
 
-    public void setCityId(Integer cityId) {
-        this.cityId = cityId;
+    public void setCity(City city) {
+        this.city = city;
     }
 
     public String getPostalCode() {
