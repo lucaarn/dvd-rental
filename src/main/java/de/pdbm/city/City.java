@@ -1,6 +1,7 @@
 package de.pdbm.city;
 
 import de.pdbm.address.Address;
+import de.pdbm.country.Country;
 import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -19,8 +20,9 @@ public class City {
     private String city;
 
     @NotNull
-    @Column(name = "country_id")
-    private Integer countryId;
+    @ManyToOne
+    @JoinColumn(name = "country_id", nullable = false)
+    private Country country;
 
     @NotNull
     @Column(name = "last_update")
@@ -38,7 +40,7 @@ public class City {
         return "City{" +
                 "id=" + id +
                 ", city='" + city + '\'' +
-                ", countryId=" + countryId +
+                ", country=" + country +
                 ", lastUpdate=" + lastUpdate +
                 ", addresses=" + addresses +
                 '}';
@@ -57,12 +59,12 @@ public class City {
         this.city = city;
     }
 
-    public Integer getCountryId() {
-        return countryId;
+    public Country getCountry() {
+        return country;
     }
 
-    public void setCountryId(Integer countryId) {
-        this.countryId = countryId;
+    public void setCountry(Country country) {
+        this.country = country;
     }
 
     public LocalDateTime getLastUpdate() {
