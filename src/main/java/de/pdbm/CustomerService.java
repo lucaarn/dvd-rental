@@ -49,11 +49,32 @@ public class CustomerService {
             return false;
         }
 
+        if (newCustomer.getStoreId() != null) {
+            customer.setStoreId(newCustomer.getStoreId());
+        }
         if (newCustomer.getFirstName() != null) {
             customer.setFirstName(newCustomer.getFirstName());
         }
         if (newCustomer.getLastName() != null) {
             customer.setLastName(newCustomer.getLastName());
+        }
+        if (newCustomer.getEmail() != null) {
+            customer.setEmail(newCustomer.getEmail());
+        }
+        if (newCustomer.getAddressId() != null) {
+            customer.setAddressId(newCustomer.getAddressId());
+        }
+        if (newCustomer.getActiveBool() != null) {
+            customer.setActiveBool(newCustomer.getActiveBool());
+        }
+        if (newCustomer.getCreateDate() != null) {
+            customer.setCreateDate(newCustomer.getCreateDate());
+        }
+        if (newCustomer.getLastUpdate() != null) {
+            customer.setLastUpdate(newCustomer.getLastUpdate());
+        }
+        if (newCustomer.getActive() != null) {
+            customer.setActive(newCustomer.getActive());
         }
         return true;
     }

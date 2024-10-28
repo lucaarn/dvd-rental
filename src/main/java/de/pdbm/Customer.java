@@ -53,6 +53,22 @@ public class Customer {
         this.lastName = lastName;
     }
 
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", storeId=" + storeId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", addressId=" + addressId +
+                ", activeBool=" + activeBool +
+                ", createDate=" + createDate +
+                ", lastUpdate=" + lastUpdate +
+                ", active=" + active +
+                '}';
+    }
+
     //getter and setter
     public Integer getId() {
         return id;
