@@ -36,9 +36,16 @@ public class CustomerService {
             return false;
         }
 
+        customer.setStoreId(newCustomer.getStoreId());
         customer.setFirstName(newCustomer.getFirstName());
         customer.setLastName(newCustomer.getLastName());
-        em.merge(customer);
+        customer.setEmail(newCustomer.getEmail());
+        customer.setAddressId(newCustomer.getAddressId());
+        customer.setActiveBool(newCustomer.getActiveBool());
+        customer.setCreateDate(newCustomer.getCreateDate());
+        customer.setLastUpdate(newCustomer.getLastUpdate());
+        customer.setActive(newCustomer.getActive());
+
         return true;
     }
 
