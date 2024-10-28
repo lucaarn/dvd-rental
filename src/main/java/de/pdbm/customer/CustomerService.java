@@ -1,4 +1,4 @@
-package de.pdbm;
+package de.pdbm.customer;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
@@ -40,7 +40,7 @@ public class CustomerService {
         customer.setFirstName(newCustomer.getFirstName());
         customer.setLastName(newCustomer.getLastName());
         customer.setEmail(newCustomer.getEmail());
-        customer.setAddressId(newCustomer.getAddressId());
+        //customer.setAddressId(newCustomer.getAddressId());
         customer.setActiveBool(newCustomer.getActiveBool());
         customer.setCreateDate(newCustomer.getCreateDate());
         customer.setLastUpdate(newCustomer.getLastUpdate());
@@ -68,9 +68,11 @@ public class CustomerService {
         if (newCustomer.getEmail() != null) {
             customer.setEmail(newCustomer.getEmail());
         }
+        /*
         if (newCustomer.getAddressId() != null) {
             customer.setAddressId(newCustomer.getAddressId());
         }
+         */
         if (newCustomer.getActiveBool() != null) {
             customer.setActiveBool(newCustomer.getActiveBool());
         }

@@ -1,5 +1,6 @@
-package de.pdbm;
+package de.pdbm.customer;
 
+import de.pdbm.address.Address;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -29,8 +30,9 @@ public class Customer {
     private String email;
 
     @NotNull
-    @Column(name = "address_id")
-    private Integer addressId;
+    @ManyToOne
+    @JoinColumn(name = "address_id", nullable = false)
+    private Address address;
 
     @NotNull
     @Column(name = "activebool")
@@ -48,11 +50,6 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
     @Override
     public String toString() {
         return "Customer{" +
@@ -61,7 +58,7 @@ public class Customer {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                ", addressId=" + addressId +
+                ", address=" + address +
                 ", activeBool=" + activeBool +
                 ", createDate=" + createDate +
                 ", lastUpdate=" + lastUpdate +
@@ -70,10 +67,6 @@ public class Customer {
     }
 
     //getter and setter
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -110,12 +103,12 @@ public class Customer {
         this.email = email;
     }
 
-    public Integer getAddressId() {
-        return addressId;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddressId(Integer addressId) {
-        this.addressId = addressId;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public Boolean getActiveBool() {

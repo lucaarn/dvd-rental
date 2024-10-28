@@ -1,4 +1,4 @@
-package de.pdbm;
+package de.pdbm.customer;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.inject.Inject;
