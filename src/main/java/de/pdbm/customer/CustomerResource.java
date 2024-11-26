@@ -4,6 +4,10 @@ import jakarta.annotation.PostConstruct;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.media.Content;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
 import java.util.logging.Logger;
 
@@ -23,6 +27,17 @@ public class CustomerResource {
 
     @GET
     @Path("{id}")
+    @Operation(description = "Find customer by Id")
+    @APIResponse(
+            responseCode = "200",
+            description = "Customer with requested Id",
+            content = @Content(schema = @Schema(name = "Customer", implementation = Customer.class))
+    )
+    @APIResponse(
+            responseCode = "404",
+            description = "Customer not found",
+            content = @Content(schema = @Schema(name = "Customer", implementation = Customer.class))
+    )
     public Response getCustomer(@PathParam("id") Integer id) {
         Customer customer = customerService.getCustomer(id);
         if (customer == null) {
