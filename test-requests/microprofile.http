@@ -1,0 +1,11 @@
+### Config
+GET http://localhost:8080/api/config
+
+### OpenAPI
+GET http://localhost:8080/openapi
+
+### Fault Tolerance Search
+GET http://localhost:8080/api/search
+
+### Fault Tolerance Random
+GET http://localhost:8080/api/search/random

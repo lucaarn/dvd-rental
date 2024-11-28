@@ -1,0 +1,2 @@
+### get first 10 customers
+http://localhost:8080/api/customers?start=0&amount=10
