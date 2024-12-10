@@ -2,16 +2,20 @@
 
 ## Setup
 
+### Generate jar
+
+`mvn package -Dquarkus.package.jar.type=uber-jar`
+
 ### Create Docker Images
 
 - Postgres:
-`docker build --tag <db_image_name> --target postgres .`
+`docker build --tag ftse-dvd-rental-customer --target postgres .`
 - Application:
-`docker build --tag <appl_image_name> --target java .`
+`docker build --tag ftse-quarkus-jar --target java .`
 
 ### Run Docker Containers
 
 - Postgres:
-`docker run --name <db_image_name> -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d <db_image_name>`
+`docker run --name ftse-dvd-rental-customer -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d ftse-dvd-rental-customer`
 - Application:
-`docker run -it -p 8080:8080 --rm <appl_image_name>`
+`docker run -it -p 8080:8080 --rm ftse-quarkus-jar`
