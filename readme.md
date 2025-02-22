@@ -6,16 +6,20 @@
 
 `mvn package -Dquarkus.package.jar.type=uber-jar`
 
-### Create Docker Images
+### Create Images
 
 - Postgres:
-`docker build --tag ftse-dvd-rental-customer --target postgres .`
+  `podman build --tag ftse-dvd-rental-customer --target postgres .`
 - Application:
-`docker build --tag ftse-quarkus-jar --target java .`
+  `podman build --tag ftse-quarkus-jar --target java .`
 
-### Run Docker Containers
+### Create Network
+
+`podman network create dvd-rental`
+
+### Run Containers
 
 - Postgres:
-`docker run --name ftse-dvd-rental-customer -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d ftse-dvd-rental-customer`
+  `podman run --name ftse-dvd-rental-customer -e POSTGRES_PASSWORD=postgres -p 5432:5432 --network=dvd-rental -d ftse-dvd-rental-customer`
 - Application:
-`docker run -it -p 8080:8080 --rm ftse-quarkus-jar`
+  `podman run -it -p 8080:8080 --network=dvd-rental --rm ftse-quarkus-jar`
